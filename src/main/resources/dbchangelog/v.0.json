@@ -1,0 +1,201 @@
+{ "databaseChangeLog": [
+  {
+    "changeSet": {
+      "id": "1733260543046-1",
+      "author": "ilya (generated)",
+      "changes": [
+        {
+          "createTable": {
+            "columns": [
+              {
+                "column": {
+                  "autoIncrement": true,
+                  "constraints": {
+                    "nullable": false,
+                    "primaryKey": true,
+                    "primaryKeyName": "products_pkey"
+                  },
+                  "name": "id",
+                  "type": "INTEGER"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "name": "name",
+                  "type": "VARCHAR(100)"
+                }
+              },
+              {
+                "column": {
+                  "name": "description",
+                  "type": "TEXT"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "name": "price",
+                  "type": "numeric(10, 2)"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "name": "quantity",
+                  "type": "INTEGER"
+                }
+              }
+            ]
+            ,
+            "tableName": "products"
+          }
+        }
+      ]
+      
+    }
+  },
+  
+  {
+    "changeSet": {
+      "id": "1733260543046-2",
+      "author": "ilya (generated)",
+      "changes": [
+        {
+          "createTable": {
+            "columns": [
+              {
+                "column": {
+                  "autoIncrement": true,
+                  "constraints": {
+                    "nullable": false,
+                    "primaryKey": true,
+                    "primaryKeyName": "orders_pkey"
+                  },
+                  "name": "id",
+                  "type": "INTEGER"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "name": "total",
+                  "type": "numeric(10, 2)"
+                }
+              }
+            ]
+            ,
+            "tableName": "orders"
+          }
+        }
+      ]
+      
+    }
+  },
+  
+  {
+    "changeSet": {
+      "id": "1733260543046-3",
+      "author": "ilya (generated)",
+      "changes": [
+        {
+          "createTable": {
+            "columns": [
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false,
+                    "primaryKey": true,
+                    "primaryKeyName": "order_items_pkey"
+                  },
+                  "name": "id_product",
+                  "type": "INTEGER"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false,
+                    "primaryKey": true,
+                    "primaryKeyName": "order_items_pkey"
+                  },
+                  "name": "id_order",
+                  "type": "INTEGER"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "name": "quantity_product",
+                  "type": "INTEGER"
+                }
+              }
+            ]
+            ,
+            "tableName": "order_items"
+          }
+        }
+      ]
+      
+    }
+  },
+  
+  {
+    "changeSet": {
+      "id": "1733260543046-4",
+      "author": "ilya (generated)",
+      "changes": [
+        {
+          "addForeignKeyConstraint": {
+            "baseColumnNames": "id_order",
+            "baseTableName": "order_items",
+            "constraintName": "order_items_id_order_fkey",
+            "deferrable": false,
+            "initiallyDeferred": false,
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "referencedColumnNames": "id",
+            "referencedTableName": "orders",
+            "validate": true
+          }
+        }
+      ]
+      
+    }
+  },
+  
+  {
+    "changeSet": {
+      "id": "1733260543046-5",
+      "author": "ilya (generated)",
+      "changes": [
+        {
+          "addForeignKeyConstraint": {
+            "baseColumnNames": "id_product",
+            "baseTableName": "order_items",
+            "constraintName": "order_items_id_product_fkey",
+            "deferrable": false,
+            "initiallyDeferred": false,
+            "onDelete": "RESTRICT",
+            "onUpdate": "NO ACTION",
+            "referencedColumnNames": "id",
+            "referencedTableName": "products",
+            "validate": true
+          }
+        }
+      ]
+      
+    }
+  }
+  
+]}
